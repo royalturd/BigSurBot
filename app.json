@@ -14,7 +14,7 @@
     },
     "ALIVE_LOGO": {
       "description": "Show Image/Logo in .alive message",
-      "required": false
+      "required": true
     },
     "API_KEY": {
       "description": "Get this value from my.telegram.org.",
