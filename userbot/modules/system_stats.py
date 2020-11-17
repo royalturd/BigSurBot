@@ -13,7 +13,7 @@ from shutil import which
 
 from telethon import version
 
-from userbot import ALIVE_NAME, CMD_HELP
+from userbot import ALIVE_NAME, ALIVE_LOGO, CMD_HELP
 from userbot.events import register
 
 # ================= CONSTANT =================
@@ -116,15 +116,17 @@ async def pipcheck(pip):
 @register(outgoing=True, pattern=r"^\.alive$")
 async def amireallyalive(alive):
     """ For .alive command, check if the bot is running.  """
-    await alive.edit(
-        "`"
-        "BigSur bot is up and running!\n\n"
-        f"Bot    : v0.0.1\n"
-        f"Python : {python_version()}\n"
-        f"User   : {DEFAULTUSER}"
-        "`"
+     logo = ALIVE_LOGO
+     output = "`"
+              "BigSur bot is up and running!\n\n"
+              f"Bot    : v0.0.1\n"
+              f"Python : {python_version()}\n"
+              f"User   : {DEFAULTUSER}"
+              "`"
     )
 
+await bot.send_file(alive.chat_id, logo, caption=output)
+    await alive.delete()
 
 @register(outgoing=True, pattern=r"^\.aliveu")
 async def amireallyaliveuser(username):
